@@ -35,6 +35,10 @@ while(query == "y"):
         remaining.pop(word)
     to_scrub_words.clear()
 
+    first_five = list(remaining.keys())[:5]
+    print("Printing top five recommended from most likely: ")
+    print(first_five)
+
     query = input("Enter GREENS (ex: 1t,3r...) or 'n': ")
     if query != "n":
         currGreens = query.split(',')
@@ -47,17 +51,18 @@ while(query == "y"):
                 for word in remaining:
                     if remaining[word][1] % charDict[ch]['green'][index] != 0:
                         to_scrub_words.add(word)
-                    else:
-                        newPrimeVal = remaining[word][1] / (charDict[ch]['green']
-                                                            [index]*charDict[ch]['yellow'])
-                        remaining[word] = (remaining[word][0], newPrimeVal)
                 validatedChars[index] = ch
+                print(validatedChars)
 
     for word in to_scrub_words:
         if not remaining:
             break
         remaining.pop(word)
     to_scrub_words.clear()
+
+    first_five = list(remaining.keys())[:5]
+    print("Printing top five recommended from most likely: ")
+    print(first_five)
 
     # Scrub Yellows (appearance of letter)
     # Remove where you guessed AND if not in word at all
@@ -79,6 +84,10 @@ while(query == "y"):
         if not remaining:
             break
         remaining.pop(word)
+
+    first_five = list(remaining.keys())[:5]
+    print("Printing top five recommended from most likely: ")
+    print(first_five)
 
     if not remaining:
         print("Sorry, couldn't find a word!")
