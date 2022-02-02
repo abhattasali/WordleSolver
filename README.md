@@ -1,4 +1,4 @@
-# SnapStudy
+# WordleSolver
 
 ## How To Use
 
